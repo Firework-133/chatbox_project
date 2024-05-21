@@ -44,6 +44,13 @@ class chatbox_OscMessage(OscMessage):
 osc_message = chatbox_OscMessage()
 
 
+# 消息列表抽签
+def get_msglist():
+    if msglist:
+        return random.choice(msglist)
+    return None
+
+
 def Simple_msg_list():
     msg_list: list = [
         get_time(UTC, "%H:%M:%S %a") + f" UTC{UTC}",
@@ -59,7 +66,7 @@ def intact_msg_list():
         next(media_title),
         get_psutil(psutil_dict),
         random_get_psutil(random_psutil_dict),
-        msglist[random.randrange(0, len(msglist) - 1)],
+        get_msglist(),
     ]
     return msg_list
 

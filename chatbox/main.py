@@ -28,20 +28,20 @@ def init():
 
 # 退出线程
 def shutdown():
-    monitor.stop()
-    fetcher.stop()
+    try:
+        monitor.stop()
+        fetcher.stop()
+        sender.send_message(path, ("", type_chatbox))
+    finally:
+        pass
 
 
 # 退出时执行
 @atexit.register
 def when_exit():
-    try:
-        # 防止意外退出
-        sender.send_message(path, ("", type_chatbox))
-        shutdown()
-        log.info("程序已退出")
-    finally:
-        pass
+    # 防止意外退出
+    shutdown()
+    log.info("程序已退出")
 
 
 # 主函数
@@ -56,13 +56,12 @@ def main() -> None:
             schedule.run_pending()
             time.sleep(1)
     except KeyboardInterrupt:
-        log.info("等待线程退出")
-
+        log.info("退出中.....")
     except Exception as e:
         log.error("程序出现错误：%s", e, exc_info=True)
-        log.info("等待线程退出")
+        log.info("退出中.....")
     finally:
-        sender.send_message(path, ("", type_chatbox))
+        log.info("退出线程中")
         shutdown()
-        log.info("线程已退出")
+        log.info("线程退出完成")
         sys.exit()

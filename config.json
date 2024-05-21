@@ -1,0 +1,40 @@
+{
+    "address": "127.0.0.1",
+    "port": 9000,
+    "path": "/chatbox/input",
+    "type_chatbox": true,
+    "Web_chatbox": true,
+    "webip": "0.0.0.0",
+    "webport": "5001",
+    "msglist": [
+        "Nya~~~",
+        "Hello!",
+        "我很可爱，请给我钱~~~",
+        "OvO*id",
+        "QAQ",
+        "喵~~~",
+        "求贴贴~~~",
+        "rua~",
+        "OvO",
+        "嘿嘿~~~",
+        "呵呵~~~",
+        "ZZZ~~~",
+        "呼噜呼噜",
+        "嚯嚯！",
+        "咕~~~~"
+    ],
+    "region": "广州",
+    "region_id": 101280101,
+    "weather_url": "http://www.weather.com.cn/weather1d/101280101.shtml",
+    "UTC": "+8",
+    "out_log": false,
+    "random_psutil_list": [
+        "磁盘 IO 统计信息",
+        "磁盘总量",
+        "获取内存信息"
+    ],
+    "psutil_list": [
+        "获取CPU和GPU使用情况",
+        "网络 IO 统计信息"
+    ]
+}

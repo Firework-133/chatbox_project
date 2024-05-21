@@ -24,6 +24,12 @@ def get_weather(place: str, url: str) -> str:
     except ConnectionRefusedError as e:
         log.error("无法获取天气,服务器错误：%s", e, exc_info=True)
         return None
+    except TimeoutError as e:
+        log.error("无法获取天气,连接超时：%s", e, exc_info=True)
+        return None
+    except Exception as e:
+        log.error("无法获取天气,未知错误：%s", e, exc_info=True)
+        return None
     return weather
 
 
