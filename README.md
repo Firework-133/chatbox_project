@@ -66,7 +66,15 @@ pip install -r requirements.txt
 
 ```
 ## 使用
-安装完依赖后，激活虚拟环境(如果有选择使用虚拟环境的话)，直接通过main.py启动
+- **下载源码**：安装完依赖后，激活虚拟环境(如果有选择使用虚拟环境的话)，直接通过main.py启动
+
+- **下载发行版**：下载后可以双击直接运行，会在当前目录下生成config.json配置文件，可以手动配置或使用默认参数，再次双击运行，就可以启动了
+
+## 自己打包
+推荐使用pyinstaller进行打包，打包指令：
+```
+pyinstaller -F --add-data="chatbox\templates;chatbox\templates" main.py
+```
 
 ## 联系方式
 如果您有任何问题或建议，请通过 Issues 联系我。
