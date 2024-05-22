@@ -47,7 +47,21 @@ pip install -r requirements.txt
     "psutil_list": [ // 固定显示的系统信息列表
         "获取CPU和GPU使用情况",
         "网络 IO 统计信息"
-    ]
+    ],
+    "Simple_msg_list": [ //简化chatbox排版列表
+        "简化时间",
+        "媒体标题"
+    ],
+    "intact_msg_list": [ //详细chatbox排版列表
+        "详细时间",
+        "天气",
+        "媒体标题",
+        "固定硬件信息",
+        "随机硬件信息",
+        "随机消息列表"
+    ],
+    "simple_time_format": "%Y-%m-%d %H:%M:%S %a", //简化时间格式
+    "intact_time_format": "%H:%M:%S %a" //详细时间格式
 }
 
 ```

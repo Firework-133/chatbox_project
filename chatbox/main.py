@@ -64,4 +64,4 @@ def main() -> None:
         log.info("退出线程中")
         shutdown()
         log.info("线程退出完成")
-        sys.exit()
+        sys.exit() #现在不是唯一的退出点

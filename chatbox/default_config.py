@@ -17,3 +17,14 @@ out_log: bool = False
 
 random_psutil_list: list = ["磁盘 IO 统计信息", "磁盘总量", "网络 IO 统计信息"]
 psutil_list: list = ["获取CPU和GPU使用情况", "获取内存信息"]
+Simple_msg_list: list = ["简化时间", "媒体标题"]
+intact_msg_list: list = [
+    "详细时间",
+    "天气",
+    "媒体标题",
+    "固定硬件信息",
+    "随机硬件信息",
+    "随机消息列表",
+]
+simple_time_format: str = "%Y-%m-%d %H:%M:%S %a"
+intact_time_format: str = "%H:%M:%S %a"
