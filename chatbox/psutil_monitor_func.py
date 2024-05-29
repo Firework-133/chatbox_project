@@ -29,16 +29,17 @@ def gpustat_new_query():
     return gpu_stats
 
 
-gpu_stats = gpustat_new_query()
+gpu_first_stats = gpustat_new_query()
 
 
 @get_psutil_state
 def get_gpu_usage() -> str:
-    # 获取GPU使用情况
-    if gpu_stats:
+    if gpu_first_stats:  # 检测当前GPU数据是否可以被读取
+        gpu_stats = gpustat_new_query()
+        # 在函数内部调用gpustat_new_query来刷新GPU状态
         gpus = gpu_stats.gpus
-        # "GPU {gpu.index}: {gpu.name}, Utilization: {gpu.utilization}%"
         gpu_usage = gpus[0].utilization
+        # 只读取第一个GPU(不支持显卡交火)
     else:
         gpu_usage = "-"
     return f"GPU:{gpu_usage}%"
