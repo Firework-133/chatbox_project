@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
 
+import gpustat
 import psutil
 import pynvml
-import gpustat
 
 import chatbox
 from chatbox import *
+
 from .custom_logger import log
 from .get_psutil_func_state import get_psutil_state
 
@@ -26,16 +27,22 @@ def gpustat_new_query():
     except pynvml.NVMLError_LibraryNotFound as e:
         gpu_stats = None
         log.warning("GPU信息获取失败：未安装英伟达驱动,暂时只支持英伟达显卡(AMD悲)")
+    except pynvml.NVMLError_NoPermission as e:
+        gpu_stats = None
+        log.error("GPU信息获取发生错误,硬件错误: %s", e, exc_info=True)
+    except Exception as e:
+        gpu_stats = None
+        log.error("GPU信息获取发生错误,未知错误: %s", e, exc_info=True)
     return gpu_stats
 
 
-gpu_first_stats = gpustat_new_query()
+# 获取GPU检测实例
+gpu_stats = gpustat_new_query()
 
 
 @get_psutil_state
 def get_gpu_usage() -> str:
-    if gpu_first_stats:  # 检测当前GPU数据是否可以被读取
-        gpu_stats = gpustat_new_query()
+    if gpu_stats:  # 检测当前GPU数据是否可以被读取
         # 在函数内部调用gpustat_new_query来刷新GPU状态
         gpus = gpu_stats.gpus
         gpu_usage = gpus[0].utilization
